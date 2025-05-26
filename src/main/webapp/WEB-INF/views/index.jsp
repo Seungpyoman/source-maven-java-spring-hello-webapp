@@ -6,7 +6,7 @@
 <body>
 <h1>${msg}</h1>
 <h2>Today is <fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/></h2>
-<h3>Version: 3.0</h3> <!-- 버전만 바꾸셔도 자동화 테스트 됩니다 -->
+<h3>Version: 2.1</h3> <!-- 버전만 바꾸셔도 자동화 테스트 됩니다 -->
 </body>
 </html>
 
