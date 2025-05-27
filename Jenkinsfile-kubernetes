@@ -41,7 +41,7 @@ spec:
     stage('Checkout') {
       steps {
         container('maven') {
-          git branch: 'main', url: '<https://github.com/Seungpyoman/source-maven-java-spring-hello-webapp.git>'
+          git branch: 'main', url: 'https://github.com/Seungpyoman/source-maven-java-spring-hello-webapp.git'
         }
       }
     }
@@ -71,7 +71,7 @@ spec:
         githubUser = 'Seunpyoman' //Ryan Jang
         githubEmail = 'paul117@naver.com' //myaccount@example.com
         githubId = 'Seungpyoman' //myaccount 
-        githubRepo = 'source-maven-jave-spring-hello-webapp' //jenkins-kube-deploy
+        githubRepo = 'source-maven-java-spring-hello-webapp' //jenkins-kube-deploy
         githubURL = "https://github.com/${githubId}/${githubRepo}.git"
         dockerhubId = 'splee17' //myaccount
         dockerhubRepo = 'hello-world' //hello-world
@@ -82,7 +82,7 @@ spec:
           sh "git config --global --add safe.directory ${workspace}"
           sh "git config --global user.name ${githubUser}"
           sh "git config --global user.email ${githubEmail}"
-          sh 'sed -i "s/image:.*/image: ${dockerhubId}\\/${dockerhubRepo}:${BUILD_NUMBER}/g" deployment.yaml'
+          sh "sed -i 's|image:.*|image: ${dockerhubId}/${dockerhubRepo}:${BUILD_NUMBER}|g' deployment.yaml"
           sh 'git add deployment.yaml'
           sh 'git commit -m "Jenkins Build Number - ${BUILD_NUMBER}"'
           withCredentials([gitUsernamePassword(credentialsId: 'github-credential', gitToolName: 'Default')]) {
