@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: splee17/hello-world:2
+        image: splee17/hello-world:6
         ports:
         - containerPort: 8080
